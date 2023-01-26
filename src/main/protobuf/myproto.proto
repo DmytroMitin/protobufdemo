@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package com.example;
 
+import "google/protobuf/wrappers.proto";
+
 message MyClass {
   int32 i0 = 1;
   optional int32 i = 2;
@@ -9,4 +11,6 @@ message MyClass {
   optional string s = 4;
   double d0 = 5;
   optional double d = 6;
+  google.protobuf.DoubleValue d1 = 7;
+  optional google.protobuf.DoubleValue d2 = 8;
 }

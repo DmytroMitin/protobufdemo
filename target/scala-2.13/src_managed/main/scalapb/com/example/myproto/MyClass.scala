@@ -13,6 +13,8 @@ final case class MyClass(
     s: _root_.scala.Option[_root_.scala.Predef.String] = _root_.scala.None,
     d0: _root_.scala.Double = 0.0,
     d: _root_.scala.Option[_root_.scala.Double] = _root_.scala.None,
+    d1: _root_.scala.Option[_root_.scala.Double] = _root_.scala.None,
+    d2: _root_.scala.Option[_root_.scala.Double] = _root_.scala.None,
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[MyClass] {
     @transient
@@ -51,6 +53,14 @@ final case class MyClass(
       if (d.isDefined) {
         val __value = d.get
         __size += _root_.com.google.protobuf.CodedOutputStream.computeDoubleSize(6, __value)
+      };
+      if (d1.isDefined) {
+        val __value = com.example.myproto.MyClass._typemapper_d1.toBase(d1.get)
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
+      };
+      if (d2.isDefined) {
+        val __value = com.example.myproto.MyClass._typemapper_d2.toBase(d2.get)
+        __size += 1 + _root_.com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(__value.serializedSize) + __value.serializedSize
       };
       __size += unknownFields.serializedSize
       __size
@@ -95,6 +105,18 @@ final case class MyClass(
         val __m = __v
         _output__.writeDouble(6, __m)
       };
+      d1.foreach { __v =>
+        val __m = com.example.myproto.MyClass._typemapper_d1.toBase(__v)
+        _output__.writeTag(7, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
+      d2.foreach { __v =>
+        val __m = com.example.myproto.MyClass._typemapper_d2.toBase(__v)
+        _output__.writeTag(8, 2)
+        _output__.writeUInt32NoTag(__m.serializedSize)
+        __m.writeTo(_output__)
+      };
       unknownFields.writeTo(_output__)
     }
     def withI0(__v: _root_.scala.Int): MyClass = copy(i0 = __v)
@@ -109,6 +131,12 @@ final case class MyClass(
     def getD: _root_.scala.Double = d.getOrElse(0.0)
     def clearD: MyClass = copy(d = _root_.scala.None)
     def withD(__v: _root_.scala.Double): MyClass = copy(d = Option(__v))
+    def getD1: _root_.scala.Double = d1.getOrElse(com.example.myproto.MyClass._typemapper_d1.toCustom(com.google.protobuf.wrappers.DoubleValue.defaultInstance))
+    def clearD1: MyClass = copy(d1 = _root_.scala.None)
+    def withD1(__v: _root_.scala.Double): MyClass = copy(d1 = Option(__v))
+    def getD2: _root_.scala.Double = d2.getOrElse(com.example.myproto.MyClass._typemapper_d2.toCustom(com.google.protobuf.wrappers.DoubleValue.defaultInstance))
+    def clearD2: MyClass = copy(d2 = _root_.scala.None)
+    def withD2(__v: _root_.scala.Double): MyClass = copy(d2 = Option(__v))
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -128,6 +156,8 @@ final case class MyClass(
           if (__t != 0.0) __t else null
         }
         case 6 => d.orNull
+        case 7 => d1.map(com.example.myproto.MyClass._typemapper_d1.toBase(_)).orNull
+        case 8 => d2.map(com.example.myproto.MyClass._typemapper_d2.toBase(_)).orNull
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -139,6 +169,8 @@ final case class MyClass(
         case 4 => s.map(_root_.scalapb.descriptors.PString(_)).getOrElse(_root_.scalapb.descriptors.PEmpty)
         case 5 => _root_.scalapb.descriptors.PDouble(d0)
         case 6 => d.map(_root_.scalapb.descriptors.PDouble(_)).getOrElse(_root_.scalapb.descriptors.PEmpty)
+        case 7 => d1.map(com.example.myproto.MyClass._typemapper_d1.toBase(_).toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
+        case 8 => d2.map(com.example.myproto.MyClass._typemapper_d2.toBase(_).toPMessage).getOrElse(_root_.scalapb.descriptors.PEmpty)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -155,6 +187,8 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
     var __s: _root_.scala.Option[_root_.scala.Predef.String] = _root_.scala.None
     var __d0: _root_.scala.Double = 0.0
     var __d: _root_.scala.Option[_root_.scala.Double] = _root_.scala.None
+    var __d1: _root_.scala.Option[_root_.scala.Double] = _root_.scala.None
+    var __d2: _root_.scala.Option[_root_.scala.Double] = _root_.scala.None
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -173,6 +207,10 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
           __d0 = _input__.readDouble()
         case 49 =>
           __d = Option(_input__.readDouble())
+        case 58 =>
+          __d1 = Option(com.example.myproto.MyClass._typemapper_d1.toCustom(__d1.map(com.example.myproto.MyClass._typemapper_d1.toBase(_)).fold(_root_.scalapb.LiteParser.readMessage[com.google.protobuf.wrappers.DoubleValue](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _))))
+        case 66 =>
+          __d2 = Option(com.example.myproto.MyClass._typemapper_d2.toCustom(__d2.map(com.example.myproto.MyClass._typemapper_d2.toBase(_)).fold(_root_.scalapb.LiteParser.readMessage[com.google.protobuf.wrappers.DoubleValue](_input__))(_root_.scalapb.LiteParser.readMessage(_input__, _))))
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -187,6 +225,8 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
         s = __s,
         d0 = __d0,
         d = __d,
+        d1 = __d1,
+        d2 = __d2,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -199,13 +239,22 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
         s0 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
         s = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).flatMap(_.as[_root_.scala.Option[_root_.scala.Predef.String]]),
         d0 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(5).get).map(_.as[_root_.scala.Double]).getOrElse(0.0),
-        d = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).flatMap(_.as[_root_.scala.Option[_root_.scala.Double]])
+        d = __fieldsMap.get(scalaDescriptor.findFieldByNumber(6).get).flatMap(_.as[_root_.scala.Option[_root_.scala.Double]]),
+        d1 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(7).get).flatMap(_.as[_root_.scala.Option[com.google.protobuf.wrappers.DoubleValue]]).map(com.example.myproto.MyClass._typemapper_d1.toCustom(_)),
+        d2 = __fieldsMap.get(scalaDescriptor.findFieldByNumber(8).get).flatMap(_.as[_root_.scala.Option[com.google.protobuf.wrappers.DoubleValue]]).map(com.example.myproto.MyClass._typemapper_d2.toCustom(_))
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
   def javaDescriptor: _root_.com.google.protobuf.Descriptors.Descriptor = MyprotoProto.javaDescriptor.getMessageTypes().get(0)
   def scalaDescriptor: _root_.scalapb.descriptors.Descriptor = MyprotoProto.scalaDescriptor.messages(0)
-  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = throw new MatchError(__number)
+  def messageCompanionForFieldNumber(__number: _root_.scala.Int): _root_.scalapb.GeneratedMessageCompanion[_] = {
+    var __out: _root_.scalapb.GeneratedMessageCompanion[_] = null
+    (__number: @_root_.scala.unchecked) match {
+      case 7 => __out = com.google.protobuf.wrappers.DoubleValue
+      case 8 => __out = com.google.protobuf.wrappers.DoubleValue
+    }
+    __out
+  }
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = com.example.myproto.MyClass(
@@ -214,7 +263,9 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
     s0 = "",
     s = _root_.scala.None,
     d0 = 0.0,
-    d = _root_.scala.None
+    d = _root_.scala.None,
+    d1 = _root_.scala.None,
+    d2 = _root_.scala.None
   )
   implicit class MyClassLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, com.example.myproto.MyClass]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, com.example.myproto.MyClass](_l) {
     def i0: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Int] = field(_.i0)((c_, f_) => c_.copy(i0 = f_))
@@ -226,6 +277,10 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
     def d0: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Double] = field(_.d0)((c_, f_) => c_.copy(d0 = f_))
     def d: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Double] = field(_.getD)((c_, f_) => c_.copy(d = Option(f_)))
     def optionalD: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[_root_.scala.Double]] = field(_.d)((c_, f_) => c_.copy(d = f_))
+    def d1: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Double] = field(_.getD1)((c_, f_) => c_.copy(d1 = Option(f_)))
+    def optionalD1: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[_root_.scala.Double]] = field(_.d1)((c_, f_) => c_.copy(d1 = f_))
+    def d2: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Double] = field(_.getD2)((c_, f_) => c_.copy(d2 = Option(f_)))
+    def optionalD2: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Option[_root_.scala.Double]] = field(_.d2)((c_, f_) => c_.copy(d2 = f_))
   }
   final val I0_FIELD_NUMBER = 1
   final val I_FIELD_NUMBER = 2
@@ -233,20 +288,30 @@ object MyClass extends scalapb.GeneratedMessageCompanion[com.example.myproto.MyC
   final val S_FIELD_NUMBER = 4
   final val D0_FIELD_NUMBER = 5
   final val D_FIELD_NUMBER = 6
+  final val D1_FIELD_NUMBER = 7
+  final val D2_FIELD_NUMBER = 8
+  @transient
+  private[myproto] val _typemapper_d1: _root_.scalapb.TypeMapper[com.google.protobuf.wrappers.DoubleValue, _root_.scala.Double] = implicitly[_root_.scalapb.TypeMapper[com.google.protobuf.wrappers.DoubleValue, _root_.scala.Double]]
+  @transient
+  private[myproto] val _typemapper_d2: _root_.scalapb.TypeMapper[com.google.protobuf.wrappers.DoubleValue, _root_.scala.Double] = implicitly[_root_.scalapb.TypeMapper[com.google.protobuf.wrappers.DoubleValue, _root_.scala.Double]]
   def of(
     i0: _root_.scala.Int,
     i: _root_.scala.Option[_root_.scala.Int],
     s0: _root_.scala.Predef.String,
     s: _root_.scala.Option[_root_.scala.Predef.String],
     d0: _root_.scala.Double,
-    d: _root_.scala.Option[_root_.scala.Double]
+    d: _root_.scala.Option[_root_.scala.Double],
+    d1: _root_.scala.Option[_root_.scala.Double],
+    d2: _root_.scala.Option[_root_.scala.Double]
   ): _root_.com.example.myproto.MyClass = _root_.com.example.myproto.MyClass(
     i0,
     i,
     s0,
     s,
     d0,
-    d
+    d,
+    d1,
+    d2
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[com.example.MyClass])
 }
