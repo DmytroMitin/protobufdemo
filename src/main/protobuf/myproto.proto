@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.example;
+
+message MyClass {
+  int32 i0 = 1;
+  optional int32 i = 2;
+  string s0 = 3;
+  optional string s = 4;
+  double d0 = 5;
+  optional double d = 6;
+}
